@@ -28,7 +28,7 @@ jobs:
              #mvn test  -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C
              env
 
-            mvn -Dtest=$(for file in $(circleci tests glob "src/test/**/**.java" | \
+            mvn -Dtest=$(for file in $(circleci tests glob "**/src/test/**/**.java" | \
             circleci tests split --split-by=timings); \
             do basename $file \
             | sed -e "s/.java/,/"; \
