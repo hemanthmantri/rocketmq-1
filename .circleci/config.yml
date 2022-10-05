@@ -24,7 +24,7 @@ jobs:
           name: Test
           command: |-
             `which java` -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize' 
-             mvn test -Dtest=org.apache.rocketmq.broker.client.ProducerManagerTest -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+             mvn test  -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C
              env
       - store_test_results:
          path: broker/target/surefire-reports
