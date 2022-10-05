@@ -27,7 +27,7 @@ jobs:
              mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
              env
       - store_test_results:
-         path: ./reports/
+         path: target/surefire-reports
 
 
 # Invoke jobs via workflows
