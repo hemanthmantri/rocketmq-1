@@ -28,12 +28,11 @@ jobs:
              #mvn test  -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C
              env
 
-            mvn -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C -Dtest=$(for file in $(circleci tests glob "**/src/test/**/**.java" | \
+            mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C -Dtest=$(for file in $(circleci tests glob "**/src/test/**/**.java" | \
             circleci tests split --split-by=timings); \
             do basename $file \
             | sed -e "s/.java/,/"; \
-            done | tr -d '\r\n') \
-            test 
+            done | tr -d '\r\n')
 
       - store_test_results:
          path: broker/target/surefire-reports
