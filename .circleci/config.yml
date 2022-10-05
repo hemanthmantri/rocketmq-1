@@ -11,6 +11,7 @@ jobs:
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # Be sure to update the Docker image tag below to openjdk version of your application.
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
+    parallelism: 3
     docker:
       - image: cimg/openjdk:11.0
     # Add steps to the job
@@ -24,11 +25,18 @@ jobs:
           name: Test
           command: |-
             `which java` -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize' 
-             mvn test  -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C
+             #mvn test  -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 6C
              env
+
+            mvn -Dtest=$(for file in $(circleci tests glob "src/test/**/**.java" | \
+            circleci tests split --split-by=timings); \
+            do basename $file \
+            | sed -e "s/.java/,/"; \
+            done | tr -d '\r\n') \
+            -e test
+
       - store_test_results:
          path: broker/target/surefire-reports
-
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
