@@ -28,6 +28,7 @@ jobs:
           command: |-
             `which java` -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize' 
              mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+             env
            
 
 
