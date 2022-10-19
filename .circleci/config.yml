@@ -22,7 +22,7 @@ jobs:
       # Then run your tests!
       - run:
           name: Test
-          command: mvn test -T 16 -Dmaven.test.failure.ignore=true -DfailIfNoTests=false 
+          command: mvn test -T 4C -Dmaven.test.failure.ignore=true --fail-at-end -DfailIfNoTests=false 
       - run:
           name: Save test results
           command: |
