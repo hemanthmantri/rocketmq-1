@@ -375,7 +375,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <skipAfterFailureCount>1</skipAfterFailureCount>
-                    <forkCount>256</forkCount>
+                    <forkCount>32</forkCount>
                     <argLine>${harnessArgLine}  @{argLine} </argLine>
                     <reuseForks>true</reuseForks>
                     <excludes>
