@@ -223,6 +223,7 @@ public class CommitLog implements Swappable {
             int pos = (int) (offset % mappedFileSize);
             return mappedFile.getData(pos, size, byteBuffer);
         }
+        int a = 2;
         return false;
     }
 
