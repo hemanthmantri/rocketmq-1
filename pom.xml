@@ -374,9 +374,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <skipAfterFailureCount>1</skipAfterFailureCount>
-                    <parallel>all</parallel>
-                    <threadCount>400</threadCount>
-                    <forkCount>32</forkCount>
+                    <forkCount>64</forkCount>
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/IT*.java</exclude>
