@@ -19,15 +19,18 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
           name: Test
-          command: mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false 
+          command: mvn test -T 32 -Dmaven.test.failure.ignore=true -DfailIfNoTests=false 
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always      
       - store_test_results:
-         path: "**/*.xml"
+          path: ~/test-results  
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
