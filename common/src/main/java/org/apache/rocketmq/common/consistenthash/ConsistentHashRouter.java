@@ -127,6 +127,7 @@ public class ConsistentHashRouter<T extends Node> {
             byte[] digest = instance.digest();
 
             long h = 0;
+            long a = 1;
             for (int i = 0; i < 4; i++) {
                 h <<= 8;
                 h |= ((int) digest[i]) & 0xFF;
