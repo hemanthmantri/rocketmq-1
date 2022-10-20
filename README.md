@@ -23,7 +23,7 @@ It offers a variety of features1:
 * Efficient pull and push consumption model
 * Million-level message accumulation capacity in a single queue
 * Multiple messaging protocols like gRPC, MQTT, JMS and OpenMessaging
-* Flexible distributed scale-out deployment architecture
+* Flexible distributed scale-out deployment architecture1
 * Lightning-fast batch message exchange system
 * Various message filter mechanics such as SQL and Tag
 * Docker images for isolated testing and cloud isolated clusters
