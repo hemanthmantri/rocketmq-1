@@ -2,8 +2,6 @@ name: Build and Run Tests by Maven
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-  push:
-    branches: [master, develop, bazel]
 jobs:
   java_build:
     name: "maven-compile (${{ matrix.os }}, JDK-${{ matrix.jdk }})"
@@ -11,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04]
+        os: [ubuntu-latest]
         jdk: [8]
     steps:
       - name: Checkout
